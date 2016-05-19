@@ -13,7 +13,7 @@ RUN set -x && mkdir -pv ~/tmp && cd ~/tmp \
   && make install
 
 RUN set -x && mkdir -pv ~/tmp && cd ~/tmp \
-  && curl https://github.com/Itseez/opencv/archive/2.4.13.zip | bsdtar -xf- && cd opencv-* \
+  && curl -L https://github.com/Itseez/opencv/archive/2.4.13.zip | bsdtar -xf- && cd opencv-* \
   && mkdir build && cd build \
   && PKG_CONFIG_PATH=/var/task/lib/pkgconfig cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/var/task ../ \
   && LD_LIBRARY_PATH=/var/task/lib make install
