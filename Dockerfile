@@ -1,6 +1,6 @@
 FROM centos:7
 
-RUN yum install -y gcc gcc-c++ cmake bsdtar nasm
+RUN yum groupinstall -y "Development Tools" && yum install -y cmake bsdtar nasm
 
 RUN set -x && mkdir -pv ~/tmp && cd ~/tmp \
   && curl https://nodejs.org/download/release/v4.3.2/node-v4.3.2.tar.gz | tar zxf - && cd node-* \
