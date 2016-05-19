@@ -1,11 +1,6 @@
-FROM sawatani/ami-60b6c60a
+FROM sawatani/ami-lambda_node43
 
-RUN set -x && yum install -y gcc gcc-c++ cmake bsdtar
-
-RUN mkdir -pv ~/tmp && cd ~/tmp \
-  && curl -L https://nodejs.org/download/release/v4.3.2/node-v4.3.2.tar.gz | tar zxf - && cd node-* \
-  && ./configure \
-  && make install
+RUN set -x
 
 RUN mkdir -pv ~/tmp && cd ~/tmp \
   && curl -L https://ffmpeg.org/releases/ffmpeg-3.0.2.tar.bz2 | tar -jxf - && cd ffmpeg-* \
