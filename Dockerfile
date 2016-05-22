@@ -18,4 +18,5 @@ RUN set -x && mkdir -pv ~/tmp && cd ~/tmp \
   && PKG_CONFIG_PATH=/var/task/lib/pkgconfig cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/var/task ../ \
   && LD_LIBRARY_PATH=/var/task/lib make install
 
-RUN rm -rf ~/tmp
+RUN rm -rf ~/tmp \
+  && echo "Build Complete: Version 1.0.0"
