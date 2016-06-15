@@ -2,10 +2,9 @@ FROM centos:7
 
 RUN yum groupinstall -y "Development Tools" && yum install -y cmake bsdtar nasm
 
-RUN set -x && mkdir -pv ~/tmp && cd ~/tmp \
-  && curl https://nodejs.org/download/release/v4.3.2/node-v4.3.2.tar.gz | tar zxf - && cd node-* \
-  && ./configure \
-  && make install
+RUN set -x \
+  && curl -sL https://rpm.nodesource.com/setup_4.x | bash - \
+  && yum install -y nodejs
 
 RUN set -x && mkdir -pv ~/tmp && cd ~/tmp \
   && curl https://ffmpeg.org/releases/ffmpeg-3.0.2.tar.bz2 | tar -jxf - && cd ffmpeg-* \
