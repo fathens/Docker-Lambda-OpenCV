@@ -19,4 +19,4 @@ RUN set -x && mkdir -pv ~/tmp && cd ~/tmp \
   && LD_LIBRARY_PATH=/var/task/lib make install
 
 RUN rm -rf ~/tmp \
-  && echo "Build Complete: Version 1.0.0"
+  && echo "Build Complete: Version 1.1.0"
