@@ -17,7 +17,7 @@ RUN set -x && mkdir -pv ~/tmp && cd ~/tmp \
   && curl -L https://github.com/Itseez/opencv_contrib/archive/3.1.0.tar.gz | tar -zxf - && CONTRIB=$(ls -d opencv_contrib-*/modules) \
   && export PKG_CONFIG_PATH=/var/task/lib/pkgconfig \
   && export LD_LIBRARY_PATH=/var/task/lib \
-  && cmake -D OPENCV_EXTRA_MODULES_PATH=$CONTRIB -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/var/task ../ \
+  && cmake -D OPENCV_EXTRA_MODULES_PATH=$CONTRIB -D WITH_IPP=ON -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/var/task ../ \
   && make install
 
 RUN rm -rf ~/tmp \
