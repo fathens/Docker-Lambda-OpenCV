@@ -15,8 +15,10 @@ RUN set -x && mkdir -pv ~/tmp && cd ~/tmp \
   && curl -L https://github.com/Itseez/opencv/archive/3.1.0.zip | bsdtar -xf- && cd opencv-* \
   && mkdir build && cd build \
   && curl -L https://github.com/Itseez/opencv_contrib/archive/3.1.0.tar.gz | tar -zxf - && CONTRIB=$(ls -d opencv_contrib-*/modules) \
-  && PKG_CONFIG_PATH=/var/task/lib/pkgconfig cmake -D OPENCV_EXTRA_MODULES_PATH=$CONTRIB -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/var/task ../ \
-  && LD_LIBRARY_PATH=/var/task/lib make install
+  && export PKG_CONFIG_PATH=/var/task/lib/pkgconfig \
+  && export LD_LIBRARY_PATH=/var/task/lib \
+  && cmake -D OPENCV_EXTRA_MODULES_PATH=$CONTRIB -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/var/task ../ \
+  && make install
 
 RUN rm -rf ~/tmp \
   && echo "Build Complete: Version 1.1.0"
