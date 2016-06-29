@@ -16,7 +16,7 @@ RUN set -x && mkdir -pv ~/tmp && cd ~/tmp \
   && mkdir build && cd build \
   && export PKG_CONFIG_PATH=/var/task/lib/pkgconfig \
   && export LD_LIBRARY_PATH=/var/task/lib \
-  && cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/var/task ../ \
+  && cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/var/task -D WITH_IPP=OFF -D WITH_OPENCL=OFF ../ \
   && make install
 
 RUN rm -rf ~/tmp \
